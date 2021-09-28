@@ -6,7 +6,9 @@ var randomNumber = function(min, max) {
 
   return value;
 };
-
+var shopOptionPrompt = window.prompt(
+  "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
+);
 var fightOrSkip = function() {
   // ask player if they'd like to fight or skip using fightOrSkip function
   var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -258,7 +260,25 @@ if (promptFight === "skip") {
       this.health += 20;
       this.money -= 7;
     }
+    switch (shopOptionPrompt) {
+      case 1:
+        playerInfo.refillHealth();
+        break;
+      case 2:
+        playerInfo.upgradeAttack();
+        break;
+      case 3:
+        window.alert("Leaving the store.");
+        break;
+      default:
+        window.alert("You did not pick a valid option. Try again.");
+        shop();
+        break;
+    }
 
+   
+    switch (shopOptionPrompt) {
+      case 1:
     else {
       window.alert("You don't have enough money!");
     }
